@@ -49,6 +49,8 @@ if ( ! class_exists( 'NPC_Admin_Metabox' ) ) {
 			// Add nonce for security and authentication.
 			wp_nonce_field( 'npc_save_action', 'npc_save_action' );
 
+			do_action( 'npc_pre_meta_box' );
+
 			$permalink = get_permalink();
 			if ( get_post_status() === 'auto-draft' ) {
 				$permalink = '';
@@ -103,6 +105,8 @@ if ( ! class_exists( 'NPC_Admin_Metabox' ) ) {
 				?>
 			</div>
 			<?php
+
+			do_action( 'npc_post_meta_box' );
 		}
 
 		/**

@@ -39,13 +39,15 @@ if ( ! class_exists( 'NPC_Browser_Hints' ) ) {
 		public function add_head_links() {
 			self::$head_is_done = true;
 
-			foreach ( self::$head_link_attrs as $attrs ) {
+			$link_attrs = apply_filters( 'npc_head_links', self::$head_link_attrs );
+			foreach ( $link_attrs as $attrs ) {
 				echo npc_form_link_tag( $attrs );
 			}
 		}
 
 		public function add_footer_links() {
-			foreach ( self::$footer_link_attrs as $attrs ) {
+			$link_attrs = apply_filters( 'npc_footer_links', self::$footer_link_attrs );
+			foreach ( $link_attrs as $attrs ) {
 				echo npc_form_link_tag( $attrs );
 			}
 		}
